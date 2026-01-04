@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikipedia Search Wrapper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .search-container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .search-container input {
+            width: 80%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        .search-container button {
+            padding: 10px;
+        }
+        .results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <h1>Wikipedia Search</h1>
+        <input type="text" id="searchQuery" placeholder="Enter search term">
+        <button onclick="searchWikipedia()">Search</button>
+        <div class="results" id="results"></div>
+    </div>
+
+    <script>
+        function searchWikipedia() {
+            const query = document.getElementById('searchQuery').value;
+            const url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&format=json&origin=*`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const resultsDiv = document.getElementById('results');
+                    resultsDiv.innerHTML = '';
+                    const searchResults = data.query.search;
+
+                    searchResults.forEach(result => {
+                        const resultItem = document.createElement('div');
+                        resultItem.innerHTML = `
+                            <h3>${result.title}</h3>
+                            <p>${result.snippet}...</p>
+                            <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(result.title)}" target="_blank">Read more</a>
+                        `;
+                        resultsDiv.appendChild(resultItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+	"folders": [
+		{
+			"name": ".vscode",
+			"path": "../../.vscode"
+		},
+		{
+			"name": "__pycache__",
+			"path": "../../__pycache__"
+		},
+		{
+			"name": "Arduino-python",
+			"path": "../../Arduino-python"
+		},
+		{
+			"name": "big math",
+			"path": "../../big math"
+		},
+		{
+			"name": "cli",
+			"path": "../../cli"
+		},
+		{
+			"name": "extensions",
+			"path": "../../extensions"
+		},
+		{
+			"name": "Gautham_pgm_practice",
+			"path": "../../Gautham_pgm_practice"
+		},
+		{
+			"name": "learning",
+			"path": "../../learning"
+		},
+		{
+			"name": "projects",
+			"path": ".."
+		},
+		{
+			"path": "../../c++"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"vector": "cpp"
+		}
+	}
+}

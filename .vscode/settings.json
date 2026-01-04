@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./Arduino-python/projects/encryption codes"
+    ],
+    "code-runner.runInTerminal": true
+}
