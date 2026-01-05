@@ -53,5 +53,15 @@ def merge_sort(A:list, increase = True):
     right =  merge_sort(A[mid:], increase)
     return merge(left + right, increase)
 
+def bubblesort(A: list[int], increase:bool = True) ->list[int]:
+    a = len(A)
+    for i in range(a):
+        for j in range(0, a - i - 1):
+            if (A[j] > A[j+1]) == increase:
+                A[j], A[j+1] = A[j+1], A[j]
+    return A
+
+
+print(bubblesort(A, increase = not True))
 print(merge_sort(A, increase = not True))
 print(insert(A, increase = not True))
