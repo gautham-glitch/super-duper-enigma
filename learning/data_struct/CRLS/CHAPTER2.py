@@ -61,7 +61,42 @@ def bubblesort(A: list[int], increase:bool = True) ->list[int]:
                 A[j], A[j+1] = A[j+1], A[j]
     return A
 
+def find_inversions(A: list[int]) -> int:
+    if len(A) <= 1:
+        return 0
+    mid = len(A) // 2
+    left = A[:mid]
+    right = A[mid:]
 
+    inversions = find_inversions(left) + find_inversions(right)
+
+    i = j = k = 0
+
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            A[k] = left[i]
+            i += 1
+        else:
+            A[k] = right[j]
+            inversions += len(left) - i
+            j += 1
+        k += 1
+
+    while i < len(left):
+        A[k] = left[i]
+        i += 1
+        k += 1
+
+    while j < len(right):
+        A[k] = right[j]
+        j += 1
+        k += 1
+
+    return inversions
+print(find_inversions(copy.deepcopy(A)))
 print(bubblesort(A, increase = not True))
 print(merge_sort(A, increase = not True))
 print(insert(A, increase = not True))
+
+
+
